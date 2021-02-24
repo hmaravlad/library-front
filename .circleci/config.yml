@@ -16,9 +16,6 @@ jobs:
           key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
             - 'node_modules'
-      - run:
-          name: Lint project
-          command: npm run lint
   deploy:
     working_directory: ~/a-library-front
     machine:
