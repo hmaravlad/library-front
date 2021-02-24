@@ -18,7 +18,7 @@ FROM nginx:1.16.0
 
 COPY --from=build /localLibrary-client/build /usr/share/nginx/html
 
-COPY /localLibrary-client/.nginx/nginx.conf.template /etc/nginx/conf.d/default.conf.template
+COPY ./.nginx/nginx.conf.template /etc/nginx/conf.d/default.conf.template
 
 EXPOSE 80
 
