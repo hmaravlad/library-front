@@ -18,9 +18,8 @@ FROM nginx:1.16.0
 
 COPY --from=build /localLibrary-client/build /usr/share/nginx/html
 
-COPY ./.nginx/nginx.conf.template /etc/nginx/conf.d/default.conf.template
+COPY nginx.conf.template /etc/nginx/conf.d/default.conf.template
 
-EXPOSE 80
 
 # Start Nginx server
 CMD /bin/bash -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
