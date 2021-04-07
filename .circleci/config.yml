@@ -22,11 +22,11 @@ jobs:
           command: sudo webdriver-manager start
       - run: 
           name: "Build the client"
-          command: npm run build
+          command: npm install && npm run build
       - run: 
           name: "Start client"
           background: true
-          command: npm install && npm start
+          command: npm start
       - run:
           name: "Run the tests"
           command: |
