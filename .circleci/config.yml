@@ -10,22 +10,10 @@ jobs:
       - image: cimg/node:12.14.1
     steps:
       - checkout
+      - lambda-tunnel/install
       - lambda-tunnel/open_tunnel:
           tunnel_name: chrome
           lambdatest_email: hmara.vladislav2@gmail.com
-      - run:
-          name: "Install OpenJDK 11"
-          command: |
-            sudo apt-get update && sudo apt-get install -y openjdk-11-jdk
-            sudo update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java
-            sudo update-alternatives --set javac /usr/lib/jvm/java-11-openjdk-amd64/bin/javac
-      - run: 
-          name: "Install and update webdriver"
-          command: sudo npm install -g webdriver-manager && sudo webdriver-manager update
-      - run: 
-          name: "Start webdriver"
-          background: true
-          command: sudo webdriver-manager start
       - run: 
           name: "Build the client"
           command: npm install && npm run build
