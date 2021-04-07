@@ -10,6 +10,7 @@ jobs:
       - image: cimg/node:12.14.1
     steps:
       - checkout
+      - lambda-tunnel/install
       - lambda-tunnel/open_tunnel:
           tunnel_name: chrome
           lambdatest_email: hmara.vladislav2@gmail.com
