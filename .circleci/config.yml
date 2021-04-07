@@ -10,11 +10,11 @@ jobs:
           key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}
       - run: 
           name: "Install and update webdriver"
-          command: npm install -g webdriver-manager && webdriver-manager update
+          command: sudo npm install -g webdriver-manager && sudo webdriver-manager update
       - run: 
           name: "Start webdriver"
           background: true
-          command: webdriver start
+          command: sudo webdriver start
       - run: 
           name: "Build the client"
           command: npm run build
