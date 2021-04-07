@@ -73,7 +73,6 @@ describe("tests for search module", function () {
     );
   });
 
-  /*
   it("should not find empty array of books if searching by rating and at least one book rated", async function () {
     await homePage.toSignInPage();
     await signInPage.signIn(credentials);
@@ -84,7 +83,6 @@ describe("tests for search module", function () {
     const books = await searchResults.getBooks();
     assert.notStrictEqual(books.length, 0);
   });
-  */
 
   after(function (done) {
     driver.quit().then(() => done());
