@@ -27,7 +27,7 @@ jobs:
           name: "Start client"
           background: true
           command: npm start
-      - run: sleep 10000;
+      - run: sleep 10;
       - run:
           name: "Run the tests"
           command: |
