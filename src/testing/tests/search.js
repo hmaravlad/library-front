@@ -1,11 +1,22 @@
-const credentials = require('../config.js');
+const { credentials, username, key, gridHost } = require('../config.js');
 const webdriver = require("selenium-webdriver");
 const assert = require('assert');
 const book = require('../pages/book.js');
+const gridUrl = 'https://' + username + ':' + key + '@' + gridHost;
 
 const driver = new webdriver.Builder()
-  .forBrowser("chrome")
-  //.usingServer('http://localhost:4444/wd/hub')
+  .usingServer(gridUrl)
+  .withCapabilities({
+    platform: 'Windows 10',
+    browserName: 'Chrome',
+    version: '87.0',
+    resolution: '1024x768',
+    network: true,
+    visual: true,
+    console: true,
+    tunnel : true,
+    name: 'Search', // name of the test
+  })
   .build();
 const By = webdriver.By;
 const until = webdriver.until;
@@ -23,7 +34,7 @@ describe("tests for search module", function () {
     driver
       .navigate()
       //.to("https://a-library-front.herokuapp.com/")
-      .to("http://127.0.0.1:3000")
+      .to("http://localhost.lambdatest.com:3000")
       .then(() => done());
   });
 
@@ -57,7 +68,7 @@ describe("tests for search module", function () {
     await homePage.search('(author = "Flaubert" and not title= "Madam Bovary") or author = "Chernyshevsky"');
     const books = await searchResults.getBooks();
     assert.strictEqual(
-      books.reduce((prev, curr) => prev && ((curr.author.includes('Flaubert') && curr.title !== "Madam Bovary" ) || curr.author.includes('Chernyshevsky')), true),
+      books.reduce((prev, curr) => prev && ((curr.author.includes('Flaubert') && curr.title !== "Madam Bovary") || curr.author.includes('Chernyshevsky')), true),
       true
     );
   });
