@@ -43,7 +43,7 @@ const SearchForm = (props) => {
       >
         <Form className='searchForm'>
           <div className='BookSearch'>
-            <Field name='query' type='text' className='searchInput' />
+            <Field name='query' type='text' className='searchInput' id='searchQuery' />
             <button type='submit' className='search'><img src='/search.png' alt='search'/></button>
           </div>
           <div className='error'>{serverError}</div>
