@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  build-test:
+  build:
     working_directory: ~/a-library-front
     docker:
       - image: cimg/node:12.14.1
@@ -47,7 +47,7 @@ jobs:
 workflows:
   build:
     jobs:
-      - build-test:
+      - build:
           filters:
             branches:
               ignore:
@@ -55,7 +55,7 @@ workflows:
                 - dev
   build-deploy-prod:
     jobs:
-      - build-test:
+      - build:
           filters:
             branches:
               only:
