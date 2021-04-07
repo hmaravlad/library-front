@@ -25,7 +25,7 @@ const HomePage = () => {
           {role === 'librarian' && <SectionTitle text='Add Authors' to='/authors/add' />}
         </>
         : <>
-          <SectionTitle text={books.length > 0 ? 'Results' : 'No Results'} />
+          <SectionTitle className='searchResultsTitle' text={books.length > 0 ? 'Results' : 'No Results'} />
           <BookList books={books} />
         </>}
     </>
