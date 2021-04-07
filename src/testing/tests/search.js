@@ -4,7 +4,7 @@ const assert = require('assert');
 const book = require('../pages/book.js');
 
 const driver = new webdriver.Builder()
-  .forBrowser("firefox")
+  .forBrowser("chrome")
   .usingServer('http://localhost:4444/wd/hub').build();
 const By = webdriver.By;
 const until = webdriver.until;
