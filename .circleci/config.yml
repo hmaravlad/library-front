@@ -10,7 +10,7 @@ jobs:
     steps:
       - run:
           name: "Install JDK"
-          command: openjdk
+          command: openjdk-install
       - restore_cache:
           key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}
       - run: 
