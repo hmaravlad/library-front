@@ -21,7 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "mocha ./src/testing/tests",
     "eject": "react-scripts eject",
     "lint": "eslint ./src/*.js"
   },
@@ -39,5 +39,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "co-mocha": "^1.2.2",
+    "mocha": "^8.3.2",
+    "selenium-webdriver": "^4.0.0-beta.2"
   }
 }
