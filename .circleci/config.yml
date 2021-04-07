@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  lambda-tunnel: lambdatest/lambda-tunnel@1.0.4
+
 jobs:
   build:
     working_directory: ~/a-library-front
@@ -7,6 +10,9 @@ jobs:
       - image: cimg/node:12.14.1
     steps:
       - checkout
+      - lambda-tunnel/open_tunnel:
+          tunnel_name: chrome
+          lambdatest_email: hmara.vladislav2@gmail.com
       - run:
           name: "Install OpenJDK 11"
           command: |
