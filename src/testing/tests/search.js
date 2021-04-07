@@ -34,7 +34,7 @@ describe("tests for search module", function () {
     driver
       .navigate()
       //.to("https://a-library-front.herokuapp.com/")
-      .to(`http://172.19.0.3:${process.env.PORT || '3000'}`)
+      .to(`http://localhost.lambdatest.com:3000`)
       .then(() => done());
   });
 
