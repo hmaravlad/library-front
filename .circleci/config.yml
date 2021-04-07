@@ -6,6 +6,7 @@ jobs:
     docker:
       - image: cimg/node:12.14.1
     steps:
+      - checkout
       - run:
           name: "Install OpenJDK 11"
           command: |
