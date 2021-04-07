@@ -56,8 +56,8 @@ describe("tests for search module", function () {
     );
   });
 
-  it("should return correct error if brackets are placed incorrectly", async function () {
-    await homePage.search('title == "Madame Bovary or (author = "Chernyshevsky"');
+  it("should return correct error if quotes are placed incorrectly", async function () {
+    await homePage.search('title == "Madame Bovary or (author = "Chernyshevsky")');
     const errors = await homePage.getErrors();
     assert.strictEqual(errors.length, 1);
     const error = await errors[0].getText();
