@@ -1,9 +1,11 @@
-const credentials = require('../credentials.js');
+const credentials = require('../config.js');
 const webdriver = require("selenium-webdriver");
 const assert = require('assert');
 const book = require('../pages/book.js');
 
-const driver = new webdriver.Builder().forBrowser("firefox").build();
+const driver = new webdriver.Builder()
+  .forBrowser("firefox")
+  .usingServer('http://localhost:4444/wd/hub').build();
 const By = webdriver.By;
 const until = webdriver.until;
 
