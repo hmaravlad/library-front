@@ -1,17 +1,31 @@
 version: 2.1
 
 jobs:
-  build:
+  build-test:
     working_directory: ~/a-library-front
     docker:
       - image: cimg/node:12.14.1
     steps:
-      - checkout
       - restore_cache:
           key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}
+      - run: 
+          name: "Install and update webdriver"
+          command: npm install -g webdriver-manager && webdriver-manager update
+      - run: 
+          name: "Start webdriver"
+          background: true
+          command: webdriver start
+      - run: 
+          name: "Build the client"
+          command: npm run build
+      - run: 
+          name: "Start client"
+          background: true
+          command: npm install && npm start
       - run:
-          name: Install dependecies
-          command: npm i
+          name: "Run the tests"
+          command: |
+              npm run test
       - save_cache:
           key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
@@ -33,7 +47,7 @@ jobs:
 workflows:
   build:
     jobs:
-      - build:
+      - build-test:
           filters:
             branches:
               ignore:
@@ -41,7 +55,7 @@ workflows:
                 - dev
   build-deploy-prod:
     jobs:
-      - build:
+      - build-test:
           filters:
             branches:
               only:
