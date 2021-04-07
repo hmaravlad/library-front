@@ -14,7 +14,7 @@ jobs:
       - run: 
           name: "Start webdriver"
           background: true
-          command: sudo webdriver start
+          command: sudo webdriver-manager start
       - run: 
           name: "Build the client"
           command: npm run build
