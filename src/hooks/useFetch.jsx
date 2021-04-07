@@ -24,7 +24,7 @@ const useFetch = (url) => {
         setFetchResult(newFetchResult);
         setShouldUpdate(false);
       });
-  }, [shouldUpdate]);
+  }, [shouldUpdate, url]);
 
   return { ...fetchResult, update: () => { setShouldUpdate(true); } };
 };
