@@ -13,6 +13,7 @@ jobs:
       - lambda-tunnel/open_tunnel:
           tunnel_name: chrome
           lambdatest_email: hmara.vladislav2@gmail.com
+          lambdatest_key: LT_KEY
       - run:
           name: "Install OpenJDK 11"
           command: |
